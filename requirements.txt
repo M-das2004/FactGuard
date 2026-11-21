@@ -1,0 +1,6 @@
+# FactGuard AI starter dependencies (pin exact versions after you test them)
+streamlit
+pytest
+coverage
+pyflakes
+pandas
