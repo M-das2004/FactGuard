@@ -1,0 +1,36 @@
+
+[
+  {
+    "id": "X001",
+    "author": "External Author",
+    "language": "python",
+    "family": "string_compress",
+    "label": "correct",
+    "fault": "none",
+    "requirement": "Compress consecutive repeated characters into character followed by count.",
+    "code": "def compress(s):\n    result = []\n    i = 0\n    while i < len(s):\n        j = i\n        while j < len(s) and s[j] == s[i]:\n            j += 1\n        result.append(s[i] + str(j - i))\n        i = j\n    return ''.join(result)",
+    "function": "compress",
+    "hidden": [
+      {"args": ["aabccc"], "expected": "a2b1c3"},
+      {"args": [""], "expected": ""},
+      {"args": ["aaaa"], "expected": "a4"},
+      {"args": ["abc"], "expected": "a1b1c1"}
+    ]
+  },
+  {
+    "id": "X002",
+    "author": "External Author",
+    "language": "python",
+    "family": "string_compress",
+    "label": "faulty",
+    "fault": "logic",
+    "requirement": "Compress consecutive repeated characters into character followed by count.",
+    "code": "def compress(s):\n    result = []\n    i = 0\n    while i < len(s):\n        j = i\n        while j < len(s) and s[j] == s[i]:\n            j += 1\n        result.append(s[i] + str(j - i + 1))\n        i = j\n    return ''.join(result)",
+    "function": "compress",
+    "hidden": [
+      {"args": ["aabccc"], "expected": "a2b1c3"},
+      {"args": [""], "expected": ""},
+      {"args": ["aaaa"], "expected": "a4"}
+    ]
+  }
+]
